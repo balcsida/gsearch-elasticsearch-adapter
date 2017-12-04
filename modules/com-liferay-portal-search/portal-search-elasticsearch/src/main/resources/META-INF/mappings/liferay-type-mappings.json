@@ -589,6 +589,7 @@
 				"type": "string"
 			},
 			"content": {
+				"analyzer": "gsearch_standard_analyzer",
 				"index": "analyzed",
 				"store": "yes",
 				"term_vector": "with_positions_offsets",
@@ -622,6 +623,7 @@
 				"type": "string"
 			},
 			"description": {
+				"analyzer": "gsearch_standard_analyzer",
 				"index": "analyzed",
 				"store": "yes",
 				"term_vector": "with_positions_offsets",
@@ -853,6 +855,7 @@
 				"type": "string"
 			},
 			"subtitle": {
+				"analyzer": "gsearch_standard_analyzer",
 				"index": "analyzed",
 				"store": "yes",
 				"type": "string"
@@ -868,6 +871,7 @@
 				"type": "string"
 			},
 			"title": {
+				"analyzer": "gsearch_standard_analyzer",
 				"index": "analyzed",
 				"store": "yes",
 				"term_vector": "with_positions_offsets",
