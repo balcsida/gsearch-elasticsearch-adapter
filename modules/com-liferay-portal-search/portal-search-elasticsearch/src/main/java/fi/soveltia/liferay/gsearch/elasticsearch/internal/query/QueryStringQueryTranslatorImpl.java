@@ -28,16 +28,14 @@ public class QueryStringQueryTranslatorImpl implements QueryStringQueryTranslato
 	public QueryBuilder translate(QueryStringQuery qq) {
 
 		QueryStringQueryBuilder queryStringQueryBuilder = QueryBuilders.queryStringQuery(qq.getQuery());
-		
-		if (qq.getFields() != null) {
-			for (String field : qq.getFields()) {
-				queryStringQueryBuilder.field(field);
-			}
-		}
 
 		if (qq.getFieldBoosts() != null) {
 			for (Entry<String, Float> entry : qq.getFieldBoosts().entrySet()) {
 				queryStringQueryBuilder.field(entry.getKey(), entry.getValue());
+			}
+		} else if (qq.getFields() != null) {
+			for (String field : qq.getFields()) {
+				queryStringQueryBuilder.field(field);
 			}
 		}
 
