@@ -1,0 +1,48 @@
+{
+	"querySuggestion": {
+		"dynamic_templates": [
+		{
+			"template_keywordSearch": {
+				"mapping": {
+					"type": "string",
+					"fields": {
+						"ngram": {
+							"type": "string",
+						        "search_analyzer": "standard",
+							"analyzer": "gsearch_shingle_analyzer"
+						},
+						"suggest" : {
+							"type" : "completion",
+							"analyzer" : "simple",
+							"search_analyzer" : "simple"
+						}
+					}
+				},
+				"match": "keywordSearch_*",
+				"match_mapping_type": "string"
+			}
+		}
+		],
+		"properties": {
+			"companyId": {
+				"index": "not_analyzed",
+				"store": "yes",
+				"type": "string"
+			},
+			"groupId": {
+				"index": "not_analyzed",
+				"store": "yes",
+				"type": "string"
+			},
+			"priority": {
+				"index": "not_analyzed",
+				"type": "float"
+			},
+			"uid": {
+				"index": "not_analyzed",
+				"store": "yes",
+				"type": "string"
+			}
+		}
+	}
+}

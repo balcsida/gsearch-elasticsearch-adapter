@@ -51,7 +51,11 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.component.annotations.ReferencePolicyOption;
 
+import fi.soveltia.liferay.gsearch.elasticsearch.internal.index.GSearchQuerySuggestionTypeFactory;
+
 /**
+ * GSearch modified. Added querySuggestion mapping creation on (re)index.
+ * 
  * @author Michael C. Han
  */
 @Component(
@@ -178,6 +182,10 @@ public class CompanyIndexFactory implements IndexFactory {
 		addLiferayDocumentTypeMappings(
 			createIndexRequestBuilder, liferayDocumentTypeFactory);
 
+		// Create GSearch query suggestion mapping
+		
+		new GSearchQuerySuggestionTypeFactory().createGSearchQuerysuggestionMapping(createIndexRequestBuilder);
+		
 		CreateIndexResponse createIndexResponse =
 			createIndexRequestBuilder.get();
 
