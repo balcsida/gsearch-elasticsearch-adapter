@@ -15,6 +15,7 @@
 package com.liferay.portal.search.elasticsearch.internal.index;
 
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
+import com.liferay.portal.kernel.json.JSONFactory;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.MapUtil;
@@ -55,7 +56,7 @@ import fi.soveltia.liferay.gsearch.elasticsearch.internal.index.GSearchQuerySugg
 
 /**
  * GSearch modified. Added querySuggestion mapping creation on (re)index.
- * 
+ *
  * @author Michael C. Han
  */
 @Component(
@@ -174,7 +175,7 @@ public class CompanyIndexFactory implements IndexFactory {
 			indicesAdminClient.prepareCreate(indexName);
 
 		LiferayDocumentTypeFactory liferayDocumentTypeFactory =
-			new LiferayDocumentTypeFactory(indicesAdminClient);
+			new LiferayDocumentTypeFactory(indicesAdminClient, jsonFactory);
 
 		addTypeMappings(createIndexRequestBuilder);
 		setSettings(createIndexRequestBuilder, liferayDocumentTypeFactory);
@@ -185,7 +186,7 @@ public class CompanyIndexFactory implements IndexFactory {
 		// Create GSearch query suggestion mapping
 		
 		new GSearchQuerySuggestionTypeFactory().createGSearchQuerysuggestionMapping(createIndexRequestBuilder);
-		
+
 		CreateIndexResponse createIndexResponse =
 			createIndexRequestBuilder.get();
 
@@ -333,6 +334,9 @@ public class CompanyIndexFactory implements IndexFactory {
 
 	@Reference
 	protected IndexNameBuilder indexNameBuilder;
+
+	@Reference
+	protected JSONFactory jsonFactory;
 
 	private static final String _TYPE_MAPPINGS_PREFIX = "typeMappings.";
 

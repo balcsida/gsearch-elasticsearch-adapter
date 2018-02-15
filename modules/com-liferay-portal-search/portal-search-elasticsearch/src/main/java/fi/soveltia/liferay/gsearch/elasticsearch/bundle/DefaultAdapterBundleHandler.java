@@ -78,6 +78,8 @@ public class DefaultAdapterBundleHandler {
 	// This is the root of the name of the default adapter to be blacklisted
 
 	private static final String DEFAULT_ADAPTER_SYMBOLIC_NAME = "com.liferay.portal.search.elasticsearch";
+	
+	
 
 	private static final Log _log = LogFactoryUtil.getLog(DefaultAdapterBundleHandler.class);
 }

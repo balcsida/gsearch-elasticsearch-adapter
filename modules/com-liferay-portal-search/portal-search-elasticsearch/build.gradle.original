@@ -62,36 +62,22 @@ dependencies {
 	provided group: "org.osgi", name: "org.osgi.core", version: "5.0.0"
 	provided group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.3.0"
 
-	// 
-	// PATCH ADDITIONS FROM HERE
-	//
-
-	// Removed tests
-
-	//testCompile group: "com.liferay", name: "com.liferay.petra.concurrent", version: "1.0.0"
-	//testCompile group: "com.liferay", name: "com.liferay.petra.lang", version: "1.0.0"
-	//testCompile group: "com.liferay", name: "com.liferay.petra.memory", version: "1.0.0"
-	//testCompile group: "com.liferay.portal", name: "com.liferay.util.java", version: "2.0.0"
-	//testCompile group: "easyconf", name: "easyconf", version: "0.9.5"
-	//testCompile group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
-	//testCompile group: "log4j", name: "log4j", version: "1.2.17"
-	//testCompile group: "net.java.dev.jna", name: "jna", version: "4.1.0"
-	//testCompile group: "org.apache.tika", name: "tika-core", version: "1.14"
-	//testCompile group: "org.jabsorb", name: "jabsorb", version: "1.3.1"
-	//testCompile group: "org.jodd", name: "jodd-bean", version: "3.6.4"
-	//testCompile group: "org.jodd", name: "jodd-json", version: "3.6.4"
-	//testCompile group: "org.slf4j", name: "slf4j-api", version: "1.7.22"
-	//testCompile project(":apps:foundation:portal-search:portal-search")
-	//testCompile project(":apps:foundation:portal-search:portal-search-api")
-	//testCompile project(":apps:foundation:portal-search:portal-search-test-util")
-	
-	// Custom QueryStringQuery type
-
-	compileOnly files('gsearch-libs/fi.soveltia.liferay.gsearch.query-1.0.0.jar')
-	
-	// Needed for the blacklister
-	
-	provided group: "org.osgi", name: "org.osgi.service.component", version: "1.3.0"	
+	testCompile group: "com.liferay", name: "com.liferay.petra.concurrent", version: "1.0.0"
+	testCompile group: "com.liferay", name: "com.liferay.petra.lang", version: "1.0.0"
+	testCompile group: "com.liferay", name: "com.liferay.petra.memory", version: "1.0.0"
+	testCompile group: "com.liferay.portal", name: "com.liferay.util.java", version: "2.0.0"
+	testCompile group: "easyconf", name: "easyconf", version: "0.9.5"
+	testCompile group: "javax.servlet", name: "javax.servlet-api", version: "3.0.1"
+	testCompile group: "log4j", name: "log4j", version: "1.2.17"
+	testCompile group: "net.java.dev.jna", name: "jna", version: "4.1.0"
+	testCompile group: "org.apache.tika", name: "tika-core", version: "1.14"
+	testCompile group: "org.jabsorb", name: "jabsorb", version: "1.3.1"
+	testCompile group: "org.jodd", name: "jodd-bean", version: "3.6.4"
+	testCompile group: "org.jodd", name: "jodd-json", version: "3.6.4"
+	testCompile group: "org.slf4j", name: "slf4j-api", version: "1.7.22"
+	testCompile project(":apps:foundation:portal-search:portal-search")
+	testCompile project(":apps:foundation:portal-search:portal-search-api")
+	testCompile project(":apps:foundation:portal-search:portal-search-test-util")
 }
 
 processResources {
@@ -99,38 +85,3 @@ processResources {
 		from configurations.elasticsearchPlugins
 	}
 }
-
-// These exludes make build to succeed. Thanks to Sampsa Sohlman (https://github.com/sammso/game-of-liferay/blob/master/build.gradle) :)
-
-if ( !System.getenv().containsKey("GITHUB_TOKEN") ) {
-        gradle.taskGraph.whenReady { graph ->
-
-                        def disabledTasks = [
-                                "findbugsMain"  ,
-                                "compileTestIntegrationJava",
-                                "findbugsTestIntegration",
-                                "unzipJar",
-                                "generateJSPJava",
-                                "writeFindBugsProject",
-                                "compileTestJava",
-                                "findSecurityBugs",
-                                "findbugsTest"
-                        ]
-
-            graph.allTasks.findAll {
-                println "Name : " + it.name
-                
-                if (disabledTasks.contains(it.name)) {
-                        println "Disable : " + it.name
-                        it.enabled=false
-                }
-                else {
-                      println "Enabled : " + it.name
-                }       
-            }
-        }
-}
-else {
-        apply from: "build-ext.gradle"
-}
-

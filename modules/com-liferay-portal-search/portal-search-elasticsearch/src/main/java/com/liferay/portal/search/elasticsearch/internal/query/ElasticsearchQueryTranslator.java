@@ -50,6 +50,8 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
+ * GSearch modified. Custom stringQueryTranslator 
+ *
  * @author André de Oliveira
  * @author Miguel Angelo Caldas Gallindo
  */
