@@ -88,8 +88,6 @@ public class CompanyIndexFactory implements IndexFactory {
 	public void deleteIndices(AdminClient adminClient, long companyId)
 		throws Exception {
 
-		System.out.println("DELETING INDICES");
-		
 		IndicesAdminClient indicesAdminClient = adminClient.indices();
 
 		String indexName = getIndexName(companyId);
