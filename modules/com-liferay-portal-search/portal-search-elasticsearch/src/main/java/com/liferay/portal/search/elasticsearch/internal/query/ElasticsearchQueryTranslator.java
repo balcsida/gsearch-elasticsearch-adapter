@@ -45,7 +45,6 @@ import com.liferay.portal.search.elasticsearch.query.WildcardQueryTranslator;
 
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -132,7 +131,7 @@ public class ElasticsearchQueryTranslator
 	public QueryBuilder visitQuery(WildcardQuery wildcardQuery) {
 		return wildcardQueryTranslator.translate(wildcardQuery);
 	}
-
+	
 	@Reference
 	protected BooleanQueryTranslator booleanQueryTranslator;
 
@@ -165,7 +164,7 @@ public class ElasticsearchQueryTranslator
 		target = "(component.name=fi.soveltia.liferay.gsearch.elasticsearch.internal.query.GSearchStringQueryTranslatorImpl)"
 	)
 	protected StringQueryTranslator stringQueryTranslator;
-
+	
 	@Reference
 	protected TermQueryTranslator termQueryTranslator;
 

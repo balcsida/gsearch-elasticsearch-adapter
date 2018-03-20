@@ -85,9 +85,9 @@ dependencies {
 	//testCompile project(":apps:foundation:portal-search:portal-search-api")
 	//testCompile project(":apps:foundation:portal-search:portal-search-test-util")
 	
-	// Custom QueryStringQuery type
+	// Custom QueryStringQuery and GSearchCloserTheBetter query types
 
-	compileOnly files('gsearch-libs/fi.soveltia.liferay.gsearch.query-1.0.0.jar')
+	compileOnly files('gsearch-libs/fi.soveltia.liferay.gsearch.query-1.1.0.jar')
 	
 	// Needed for the blacklister
 	
