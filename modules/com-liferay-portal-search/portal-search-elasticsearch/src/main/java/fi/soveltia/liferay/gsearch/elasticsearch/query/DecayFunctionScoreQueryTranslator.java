@@ -5,7 +5,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 import fi.soveltia.liferay.gsearch.query.DecayFunctionScoreQuery;
 
 /**
- * GSearch Closer the Better query type translator service.
+ * GSearch decay function score query translator service.
  * 
  * @author Petteri Karttunen
  *
