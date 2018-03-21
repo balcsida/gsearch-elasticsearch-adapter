@@ -48,12 +48,10 @@ public class DefaultAdapterBundleHandler {
 		if (symbolicName.equals(DEFAULT_ADAPTER_SYMBOLIC_NAME)) {
 
 			if (_log.isInfoEnabled()) {
-				_log.info("Stopping " + bundle);
+				_log.info("Uninstalling the standard adapter" + bundle);
 			}
 			
-			// Just stop, don't uninstall
-			
-			bundle.stop();
+			bundle.uninstall();
 		}
 	}
 
@@ -67,6 +65,8 @@ public class DefaultAdapterBundleHandler {
 				return;
 			}
 
+			_log.info("Running GSearch bundle listener.");
+			
 			try {
 				_processBundle(bundleEvent.getBundle());
 			} catch (Exception e) {
