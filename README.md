@@ -1,5 +1,7 @@
 # Liferay GSearch Elasticsearch Adapter
 
+*Notice: This is for DXP 7.0 and Elasticsearch 2 series only*
+
 This is a customized Liferay Elasticsearch Adapter for the GSearch project. For details please see the GSearch project page at https://github.com/peerkar/liferay-gsearch.
 
 Please see repo tags for specific adapter base versions.
